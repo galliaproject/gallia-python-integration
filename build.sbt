@@ -1,11 +1,11 @@
 // gallia-python-integration
 
-ThisBuild / scalaVersion := "2.12.17"
+ThisBuild / scalaVersion := "2.13.12"
 ThisBuild / organization := "io.github.galliaproject" // *must* match groupId for sonatype
-ThisBuild / version      := "0.4.0"
+ThisBuild / version      := "0.5.0"
 
 // ===========================================================================
-lazy val galliaVersion  = "0.4.0"
+lazy val galliaVersion  = "0.5.0"
 lazy val scalaPyVersion = "0.5.1"
 
 // ===========================================================================
