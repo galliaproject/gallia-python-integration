@@ -21,13 +21,13 @@ def isPandasNull(value: py.Any): Boolean = pd.isnull(value).as[Boolean]
             .show() */
     def custom(f: py.Module => Unit): MatplotlibBased =
       new MatplotlibBased { 
-        def common = _ => f(mod) }             
+        def common() = _ => f(mod) }             
   }
   
   // ===========================================================================
   implicit class HeadSViz__(z: HeadS) {
-        //implicit class ic220401175833(z: HeadS) {
-      def pyarray(path: KPathW) = z.forceAnys(path).pipe(ScalaPyUtils.scalaAnysToPyAny)// }
+      def forceAnys(x: KPathW): Seq[Any] = ??? // TODO: t240208142631
+      def pyarray(path: KPathW) = z.forceAnys(path).pipe(ScalaPyUtils.scalaAnysToPyAny)
     
       def viz = new Viz(z)
 
@@ -50,10 +50,10 @@ def isPandasNull(value: py.Any): Boolean = pd.isnull(value).as[Boolean]
         def histogram(path: KPathW, bins: Int) =
           GalliaMatplotlib.histogram(z)(path, bins)
 //          new MatplotlibBased { 
-//          def common = _ => GalliaMatplotlib.histogram(z)(path, bins) }
+//          def common() = _ => GalliaMatplotlib.histogram(z)(path, bins) }
 
         def histogram2(path: KPathW, bins: Int) = new MatplotlibBased { 
-          def common = _ => plt.custom { _.hist(
+          def common() = _ => plt.custom { _.hist(
               x    = z.pyarray(path),
               bins = bins) }
           //.show()          
@@ -64,11 +64,11 @@ def isPandasNull(value: py.Any): Boolean = pd.isnull(value).as[Boolean]
       // ---------------------------------------------------------------------------
       class Seaborn private[pyviz] (z: HeadS) {    
         def lineplot(x: KeyW, y: KeyW) = new MatplotlibBased {
-          def common = _ => GalliaSeaborn.lineplot(z)(x, y) } }
+          def common() = _ => GalliaSeaborn.lineplot(z)(x, y) } }
 
     // ---------------------------------------------------------------------------
     /*sealed */trait MatplotlibBased { //import GalliaMatplotlib.plt
-      protected def common: Unit => Unit
+      protected def common(): Unit => Unit
 
       def show   ()            : Unit = { common(); plt.show() }
       def savefig(path: String): Unit = { common(); plt.savefig(path) }          

@@ -1,12 +1,11 @@
 // gallia-python-integration
 
-ThisBuild / scalaVersion := "2.13.12"
+ThisBuild / scalaVersion := "3.3.1"
 ThisBuild / organization := "io.github.galliaproject" // *must* match groupId for sonatype
-ThisBuild / version      := "0.5.0"
+ThisBuild / version      := "0.6.0-SNAPSHOT"
 
 // ===========================================================================
-lazy val galliaVersion  = "0.5.0"
-lazy val scalaPyVersion = "0.5.1"
+lazy val scalaPyVersion = "0.5.2"
 
 // ===========================================================================
 lazy val `gallia-python-integration` =
@@ -38,7 +37,7 @@ lazy val `gallia-python-integration` =
 
 // ===========================================================================
 ThisBuild / libraryDependencies ++= Seq(
-  "io.github.galliaproject" %% "gallia-core"  % galliaVersion,
+  "io.github.galliaproject" %% "gallia-core"  % version.value,
   "me.shadaj"               %% "scalapy-core" % scalaPyVersion) // to use python from Scala somewhat seamlessly      
 
 // ===========================================================================

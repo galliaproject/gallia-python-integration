@@ -4,7 +4,11 @@ package python
 import me.shadaj.scalapy.py
 
 // ===========================================================================
-object ScalaPyUtils { import py.Dynamic.global
+object ScalaPyUtils {
+  import py.Dynamic.global
+  import py.SeqConverters
+  
+  // ---------------------------------------------------------------------------
   lazy val collections = py.module("collections")
 
   // ===========================================================================

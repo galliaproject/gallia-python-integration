@@ -3,7 +3,7 @@ package pandas
 
 import enumeratum.{Enum, EnumEntry}
 import aptus._
-import gallia.reflect.BasicType
+import gallia.meta.basic.BasicType
 import me.shadaj.scalapy.readwrite.Reader
 
 // ===========================================================================
