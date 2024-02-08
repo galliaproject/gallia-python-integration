@@ -26,7 +26,6 @@ def isPandasNull(value: py.Any): Boolean = pd.isnull(value).as[Boolean]
   
   // ===========================================================================
   implicit class HeadSViz__(z: HeadS) {
-      def forceAnys(x: KPathW): Seq[Any] = ??? // TODO: t240208142631
       def pyarray(path: KPathW) = z.forceAnys(path).pipe(ScalaPyUtils.scalaAnysToPyAny)
     
       def viz = new Viz(z)
